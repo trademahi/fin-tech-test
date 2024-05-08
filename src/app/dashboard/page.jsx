@@ -18,13 +18,15 @@ const page = () => {
         const response = await axios.get("/api/graph");
         const status = response.data.status;
         console.log(response,'outside')
+       
         if (status === "success") {
-   console.log(response.data,'vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv')
+         console.log(response.data,'vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv')
           setGraphTwoData(response.data.data);
-          setGraphOne(response.data.graphOne);
+          // setGraphOne(response.data.graphOne);
      
-          setTrigger(Date());
+          return setTrigger(Date());
         }
+
         setGraphLoading(false);
         
       } catch (error) {
@@ -59,13 +61,13 @@ const page = () => {
         </div>
 
         <div className="w-[80%] mx-auto shadow rounded-lg border h-[55vh] relative">
-          {graphLoading ? (
+          {/* {graphLoading ? (
             <LoaderSpin />
           ) : (
           
             <ChartComponent currentData={graphOne} />
            
-          )}
+          )} */}
         </div>
 
         <div
