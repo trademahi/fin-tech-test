@@ -10,4 +10,5 @@ This Fin-Tech project consists of several key pages:
 4. **Uploading File**: Allows users to upload financial documents securely.
 
 #Navigate to the Project Directory:
-**cd <project-directory>**
+
+cd <project-directory>
