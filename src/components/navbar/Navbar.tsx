@@ -24,7 +24,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="w-full bg-white border text-black flex justify-between  h-[8.5vh]  relative">
+    <div className="w-full bg-white border text-black flex justify-between  h-[9vh]  relative">
       <div className="flex gap-3">
         <div className="w-[7rem] h-full">
           <Image className="w-full h-full" src={logo} alt="logo" />
@@ -48,7 +48,7 @@ const Navbar = () => {
           >
             Logout
             <span>
-              <IoMdLogOut className="text-[1.5rem] text-black my-auto logouticon ml-2" />
+              <IoMdLogOut className="text-[1.5rem] text-black my-auto logouticon ml-1" />
             </span>
           </button>
         ) : (

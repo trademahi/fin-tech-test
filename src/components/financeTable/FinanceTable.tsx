@@ -37,7 +37,7 @@ const FinanceTable: React.FC<finDetailsProps> = ({ finDetails, loading }) => {
                           finDetails.length > 0 &&
                           Object.keys(finDetails[0]).map(
                             (e: any, index: number) => {
-                              if (e === "_id") {
+                              if (e === "_id"|| e === "uploader" ) {
                                 return;
                               }
                               return (
@@ -75,9 +75,7 @@ const FinanceTable: React.FC<finDetailsProps> = ({ finDetails, loading }) => {
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
                               {e.date}
                             </td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
-                              {e.uploader}
-                            </td>
+                           
                           </tr>
                         ))}
                       {finDetails.length == 0 && (
