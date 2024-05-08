@@ -1,11 +1,4 @@
 # Fin-Tech Project
-<p align="center"><img src="https://i.postimg.cc/9f7RngtP/Screenshot-2024-05-08-133355.png
-" alt="login-image"></p>
-<p align="center"><img src="https://i.postimg.cc/447fbHPt/Screenshot-2024-05-08-133431.png" alt="upload-image"></p>
-<p align="center"><img src="https://i.postimg.cc/yxJwm9zN/Screenshot-2024-05-08-133448.png" alt="upload-image"></p>
-<p align="center"><img src="https://i.postimg.cc/Fz8X8pxc/Screenshot-2024-05-08-133600.png" alt="upload-image"></p>
-<p align="center"><img src="https://i.postimg.cc/CMPhbHbw/Screenshot-2024-05-08-133546.png" alt="upload-image"></p>
-
 <p align="center"><img src="https://i.postimg.cc/9f7RngtP/Screenshot-2024-05-08-133355.png" alt="upload-image"></p>
 
 ## Pages Overview
@@ -34,8 +27,6 @@ This project is deployed on Vercel. You can access it [here](https://fin-tech-te
 
 
 
-
-
 ## Running Flow
 
 To run this project locally, follow these steps:
@@ -58,6 +49,15 @@ Once the dependencies are installed, run the project.
 
 5. **Access the Project Locally**: 
 Once the project is running locally, access it by opening a web browser and navigating to the appropriate URL.
+
+
+## Other pages
+<p align="center"><img src="https://i.postimg.cc/9f7RngtP/Screenshot-2024-05-08-133355.png
+" alt="login-image"></p>
+<p align="center"><img src="https://i.postimg.cc/447fbHPt/Screenshot-2024-05-08-133431.png" alt="upload-image"></p>
+<p align="center"><img src="https://i.postimg.cc/yxJwm9zN/Screenshot-2024-05-08-133448.png" alt="upload-image"></p>
+<p align="center"><img src="https://i.postimg.cc/Fz8X8pxc/Screenshot-2024-05-08-133600.png" alt="upload-image"></p>
+<p align="center"><img src="https://i.postimg.cc/CMPhbHbw/Screenshot-2024-05-08-133546.png" alt="upload-image"></p>
 
 
 
