@@ -1,12 +1,13 @@
 # Fin-Tech Project
+<p align="center"><img src="https://i.postimg.cc/9f7RngtP/Screenshot-2024-05-08-133355.png
+" alt="login-image"></p>
 <p align="center"><img src="https://i.postimg.cc/447fbHPt/Screenshot-2024-05-08-133431.png" alt="upload-image"></p>
 <p align="center"><img src="https://i.postimg.cc/yxJwm9zN/Screenshot-2024-05-08-133448.png" alt="upload-image"></p>
 <p align="center"><img src="https://i.postimg.cc/Fz8X8pxc/Screenshot-2024-05-08-133600.png" alt="upload-image"></p>
 <p align="center"><img src="https://i.postimg.cc/CMPhbHbw/Screenshot-2024-05-08-133546.png" alt="upload-image"></p>
 
 <p align="center"><img src=https://i.postimg.cc/k4y500VS/Screenshot-2024-05-08-133410.png" alt="upload-image"></p>
-<p align="center"><img src="https://i.postimg.cc/9f7RngtP/Screenshot-2024-05-08-133355.png
-" alt="upload-image"></p>
+
 ## Pages Overview
 
 This Fin-Tech project consists of several key pages:
