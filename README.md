@@ -12,9 +12,8 @@ This Fin-Tech project consists of several key pages:
 
 ## Deployment
 
-This project is deployed on Vercel. You can access it at the following link:
+This project is deployed on Vercel. You can access it [here]([https://your-vercel-project.vercel.app/](https://your-vercel-project.vercel.app/](https://fin-tech-test-mahis-projects-747feda8.vercel.app/)).
 
-[Fin-Tech Project - Vercel Deployment]([https://your-vercel-project.vercel.app/](https://fin-tech-test-mahis-projects-747feda8.vercel.app/))
 
 
 ## Running Flow
