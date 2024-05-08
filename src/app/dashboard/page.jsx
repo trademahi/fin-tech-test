@@ -17,9 +17,9 @@ const page = () => {
       try {
         const response = await axios.get("/api/graph");
         const status = response.data.status;
-    
+        console.log(response,'outside')
         if (status === "success") {
-   
+   console.log(response.data,'vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv')
           setGraphTwoData(response.data.data);
           setGraphOne(response.data.graphOne);
      
