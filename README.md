@@ -12,7 +12,8 @@ This Fin-Tech project consists of several key pages:
 
 ## Deployment
 
-This project is deployed on Vercel. You can access it [here](https://your-vercel-project.vercel.app/).
+This project is deployed on Vercel. You can access it [here](https://fin-tech-test.vercel.app/).
+
 
 
 
