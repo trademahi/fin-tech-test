@@ -17,6 +17,7 @@ This Fin-Tech project consists of several key pages:
 In addition to the core functionalities, this project includes the following extra features:
 
 - **Missing Data Files Count**: Calculates and shows the count of missing data files in the frontend interface.
+- **Token Authentication Middleware**: Middleware to handle authentication tokens, preventing unauthorized access to routes.
 - **Loading Screen**: Displays a loading screen while data is being fetched.
 - **No Data Message**: Displays a message when no data is available.
 
