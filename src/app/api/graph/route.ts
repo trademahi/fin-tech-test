@@ -90,7 +90,7 @@ export async function POST(req: CustomRequest, res: NextResponse) {
 
     const customResponse = NextResponse.json({ data, status: "success", graphOne: graphOneData });
     customResponse.headers.set('Cache-Control', 'no-store');
-
+    // res.setHeader('Cache-Control', 'no-store');
     return customResponse;
   } catch (error) {
     console.error(error);

@@ -27,7 +27,7 @@ const page = () => {
           setGraphTwoData(response.data.data);
           setGraphOne(response.data.graphOne);
      
-           setTrigger(Date());
+          //  setTrigger(Date());
         }
 
         setGraphLoading(false);
@@ -38,7 +38,7 @@ const page = () => {
       }
     };
     handleGetFinData();
-  }, [tigger]);
+  }, []);
 
   return (
     <>
