@@ -10,7 +10,6 @@ export async function POST(req: CustomRequest, res: NextResponse) {
     await clientPromise();
 
     const searchParams = await req.json()
-    console.log(searchParams,'searchParamssearchParamssearchParams')
     const email = searchParams.userId
 
     const graphTwo = await Financial.aggregate([

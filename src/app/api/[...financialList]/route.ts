@@ -12,12 +12,12 @@ export async function GET(req: NextRequest, res: NextResponse) {
     const pageNumber = parseInt(page as string);
     const itemsPerPage = parseInt(perPage as string);
     const startIndex = (pageNumber - 1) * itemsPerPage;
-const totalLength= await Financial.countDocuments()
+
 const cookiesAccessToken: any = req?.cookies.get("Email");
 const email=cookiesAccessToken?.value
 
 
-
+const totalLength= await Financial.find({uploader:email})
 // ='eve.holt@reqres.in'
     const data = await Financial.find(
       {uploader: { $regex: `^${email}$`, $options: "i" } },
@@ -31,7 +31,7 @@ const email=cookiesAccessToken?.value
       .limit(itemsPerPage);
 
     return NextResponse.json(
-      { message: "date fetched successfully",totalLength ,data: data, status: "success" },
+      { message: "date fetched successfully",totalLength:totalLength.length ,data: data, status: "success" },
       { status: 200 }
     );
  

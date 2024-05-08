@@ -10,7 +10,6 @@ const page = () => {
 const [currentPage, setCurrentPage] = useState(1);
 const itemsPerPage = 5;
 const[totalPages,setTotalPages]=useState(0)
-
 const[loading,setLoading]=useState(true)
 const[finDetails,setFinDetails]=useState([])
   useEffect(()=>{
@@ -61,7 +60,7 @@ handleGetFinData()
 <div className='w-full flex  text-black  absolute bottom-[1rem] left-0'>
   <div className='w-fit mx-auto flex gap-4'>
     <button disabled={currentPage===1} onClick={()=>handlePagination(-1)}><GrCaretPrevious className='text-[1.5rem] paginationBtn'/></button>
-    <p>{currentPage} -{Math.round(totalPages/itemsPerPage) }</p>
+{ totalPages===0 ?<p>0</p>  : <p>{currentPage} -{Math.round(totalPages/itemsPerPage) }</p>}
     <button disabled={currentPage==Math.round(totalPages/itemsPerPage)} onClick={()=>handlePagination(1)}><GrCaretNext className='text-[1.5rem] paginationBtn'/></button>
   </div>
 </div>

@@ -51,7 +51,6 @@ export async function POST(req: NextRequest, res: NextResponse) {
               };
              
               const data = new Financial(documentObject);
-             console.log(data,'data')
               await data.save();
           } catch (error) {
               console.error("Error processing row:", error);
@@ -65,7 +64,6 @@ export async function POST(req: NextRequest, res: NextResponse) {
 
   try {
       await Promise.all(promises);
-      console.log("All documents saved successfully.");
   } catch (error) {
       console.error("Error saving documents:", error);
   }

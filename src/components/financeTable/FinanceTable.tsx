@@ -88,7 +88,7 @@ const FinanceTable: React.FC<finDetailsProps> = ({
                         ))}
                       { finDetails.length==0 &&
                         <div className="w-full h-[50vh]  border flex justify-center">
-                          <p className="text-black text-[1.4rem] m-auto">No data</p>
+                          <p className="text-black  m-auto">No data</p>
                         </div>
                         }
                     </tbody>
