@@ -10,6 +10,16 @@ This Fin-Tech project consists of several key pages:
 4. **Uploading File**: Allows users to upload financial documents securely.
 
 
+
+## Additional Features
+
+In addition to the core functionalities, this project includes the following extra features:
+
+- **Missing Data Files Count**: Calculates and shows the count of missing data files in the frontend interface.
+- **Loading Screen**: Displays a loading screen while data is being fetched.
+- **No Data Message**: Displays a message when no data is available.
+
+  
 ## Deployment
 
 This project is deployed on Vercel. You can access it [here](https://fin-tech-test.vercel.app/).
