@@ -6,6 +6,7 @@ import Link from "next/link";
 import axios from "axios";
 import ChartComponent from "@/components/TreeChart/Page";
 import LoaderSpin from "@/components/loaderSpin/LoaderSpin";
+import Cookies from 'js-cookie';
 const page = () => {
   const [graphTwoData, setGraphTwoData] = useState([]);
   const [graphOne, setGraphOne] = useState({});
@@ -13,9 +14,11 @@ const page = () => {
   const [tigger, setTrigger] = useState(Date());
 
   useEffect(() => {
+   
     const handleGetFinData = async () => {
       try {
-        const response = await axios.get("/api/graph");
+        const data=  Cookies.get('Email')
+        const response = await axios.get(`/api/graph?userId=${data}`);
         const status = response.data.status;
         console.log(response,'outside')
        

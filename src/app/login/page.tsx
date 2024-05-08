@@ -52,7 +52,7 @@ const page = () => {
          
             Cookies.set("Token", TokenValue, { expires: 7 });
             Cookies.set("Email", formData.email, { expires: 7 });
-            // localStorage.setItem("Token", TokenValue)
+    
 
             messageApi.open({
                 type: "success",

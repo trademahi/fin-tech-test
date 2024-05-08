@@ -1,18 +1,23 @@
 import { NextRequest, NextResponse } from "next/server";
 import clientPromise from "@/lib/mongoose";
 import Financial from "@/lib/models/financial.model";
+interface CustomRequest extends NextRequest {
+  email?: string;
+}
 
-export async function GET(req: NextRequest, res: NextResponse) {
+export async function GET(req: CustomRequest, res: NextResponse) {
   try {
     await clientPromise();
 
 
-    const cookies=req?.cookies.get('Token')
-    let email;
-    if(cookies){
-       email=cookies?.value
-    }
+    // const cookies=req?.cookies.get('Token')
    
+    // if(cookies){
+    //    email=cookies?.value
+    // }
+   
+    const searchParams = req.nextUrl.searchParams
+    const email = searchParams.get('userId')
 
     const graphTwo = await Financial.aggregate([
       {
@@ -27,7 +32,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
         },
       },
     ]);
-    console.log(graphTwo,'----------------------------------')
+    // console.log(graphTwo,'----------------------------------')
     const totalCharityInMillion = graphTwo.reduce((total, item) => total + item.totalCharity, 0) / 1000000;
 
     const data = {
@@ -40,7 +45,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
         children: [],
       })),
     };
-console.log(data,'data-----------------------------------------')
+// console.log(data,'data-----------------------------------------')
     let dateChecheck = "%Y";
     const yearMonth: any = 2023;
     let convertDate = new Date(parseInt(yearMonth), 1, 1);
@@ -88,6 +93,8 @@ console.log(data,'data-----------------------------------------')
     // const graphOneData = {
     //   formattedMonths, totalProfits, totalRevenues
     // };
+
+  
 
     const customResponse = NextResponse.json({ data, status: "success", graphOne: {} });
     customResponse.headers.set('Cache-Control', 'no-store');

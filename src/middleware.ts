@@ -4,7 +4,7 @@ import isAuthenticated from "./utils/isAuth";
 
 export async function middleware(request: NextRequest) {
   try {
-    const authenticated = await isAuthenticated(request);
+    const authenticated:any = await isAuthenticated(request);
 
     if (request.nextUrl.pathname.startsWith("/login")) {
       if (!authenticated) {
