@@ -12,6 +12,8 @@ const page = () => {
   const [graphOne, setGraphOne] = useState({});
   const [graphLoading, setGraphLoading] = useState(true);
   const [tigger, setTrigger] = useState(Date());
+  const[graphOneExist,setGrpahOneExist]=useState(false)
+  const[graphTwoExist,setGrpahTwoExist]=useState(false)
 
   useEffect(() => {
    
@@ -20,14 +22,21 @@ const page = () => {
         const data=  Cookies.get('Email')
         const response = await axios.post("/api/graph",{userId:data});
         const status = response.data.status;
-        console.log(response,'outside')
        
         if (status === "success") {
-         console.log(response.data,'vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv')
           setGraphTwoData(response.data.data);
+          const secGraph=response.data.data
+          const firstGraph=response.data.graphOne
+
           setGraphOne(response.data.graphOne);
-     
-          //  setTrigger(Date());
+     if(secGraph.children.length>0){
+  
+      setGrpahTwoExist(true)
+     }
+
+     if(firstGraph.formattedMonths.length>0){
+      setGrpahOneExist(true)
+     }
         }
 
         setGraphLoading(false);
@@ -67,8 +76,18 @@ const page = () => {
           {graphLoading ? (
             <LoaderSpin />
           ) : (
+          <> 
+      {  graphOneExist ?  
+          <ChartComponent currentData={graphOne} />:
+          <div className="w-full h-full flex justify-center">
+          <p className="m-auto">No data</p>
+               </div>
+                  
+          }
+          </>
           
-            <ChartComponent currentData={graphOne} />
+          
+           
            
           )}
         </div>
@@ -80,15 +99,25 @@ const page = () => {
           {graphLoading ? (
             <LoaderSpin />
           ) : (
+<>
+ {  graphTwoExist ?  
+        <Tree
+        data={graphTwoData}
+        nodeRadius={100}
+        margins={{ top: 2, bottom: 20, left: 50, right: 100 }}
+        height={340}
+        width={870}
+      />:
+      <div className="w-full h-full flex justify-center">
+ <p className="m-auto">No data</p>
+      </div>
+         
+          }
 
+
+</>
         
-          <Tree
-          data={graphTwoData}
-          nodeRadius={100}
-          margins={{ top: 2, bottom: 20, left: 50, right: 100 }}
-          height={340}
-          width={870}
-        />
+         
           )}
         </div>
       </div>
