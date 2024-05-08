@@ -1,5 +1,6 @@
 # Fin-Tech Project
-
+<p align="center"><img src="https://i.postimg.cc/447fbHPt/Screenshot-2024-05-08-133431.png
+" alt="project-image"></p>
 ## Pages Overview
 
 This Fin-Tech project consists of several key pages:
