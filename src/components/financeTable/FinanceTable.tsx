@@ -12,24 +12,19 @@ interface finDetailsProps {
     createdAt: Date;
     updatedAt: Date;
     __v: number;
-    uploader:string
+    uploader: string;
   }[];
   loading?: boolean;
-
 }
 
-const FinanceTable: React.FC<finDetailsProps> = ({
-  finDetails,
-  loading
-}) => {
+const FinanceTable: React.FC<finDetailsProps> = ({ finDetails, loading }) => {
   return (
     <>
       <div className="w-[80%] h-fit mx-auto mt-[2rem]  rounded-lg overflow-hidden">
         {loading ? (
           <div className="w-full h-[50vh] relative">
- <LoaderSpin/>
+            <LoaderSpin />
           </div>
-       
         ) : (
           <div className="flex flex-col">
             <div className="-m-1.5 overflow-x-auto">
@@ -56,7 +51,6 @@ const FinanceTable: React.FC<finDetailsProps> = ({
                               );
                             }
                           )}
-
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200">
@@ -86,13 +80,12 @@ const FinanceTable: React.FC<finDetailsProps> = ({
                             </td>
                           </tr>
                         ))}
-                      { finDetails.length==0 &&
+                      {finDetails.length == 0 && (
                         <div className="w-full h-[50vh]  border flex justify-center">
                           <p className="text-black  m-auto">No data</p>
                         </div>
-                        }
+                      )}
                     </tbody>
-                 
                   </table>
                 </div>
               </div>

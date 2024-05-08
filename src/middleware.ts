@@ -4,7 +4,7 @@ import isAuthenticated from "./utils/isAuth";
 
 export async function middleware(request: NextRequest) {
   try {
-    const authenticated:any = await isAuthenticated(request);
+    const authenticated: any = await isAuthenticated(request);
 
     if (request.nextUrl.pathname.startsWith("/login")) {
       if (!authenticated) {
@@ -12,28 +12,18 @@ export async function middleware(request: NextRequest) {
       }
       return NextResponse.redirect(new URL("/dashboard", request.url));
     }
-
-    if (request.nextUrl.pathname.startsWith("/dashboard") ) {
+    if (request.nextUrl.pathname.startsWith("/dashboard") || request.nextUrl.pathname.startsWith("/charity-list")
+    ||request.nextUrl.pathname.startsWith("/upload") ) {
       if (!authenticated) {
         return NextResponse.redirect(new URL("/login", request.url));
       }
       return NextResponse.next();
     }
 
-    if (request.nextUrl.pathname.startsWith("/charity-list") ) {
-      if (!authenticated) {
-        return NextResponse.redirect(new URL("/login", request.url));
-      }
-      return NextResponse.next();
+    
+    if(!authenticated){
+      return NextResponse.json({message:'unAuthorized user'},{status:400})
     }
-    if (request.nextUrl.pathname.startsWith("/upload") ) {
-      if (!authenticated) {
-        return NextResponse.redirect(new URL("/login", request.url));
-      }
-      return NextResponse.next();
-    }
-
-
 
     return NextResponse.next();
   } catch (error) {
@@ -46,5 +36,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/login", "/dashboard","/upload","/charity-list"],
+  matcher: ["/api/:path*","/login", "/dashboard", "/upload", "/charity-list"],
 };

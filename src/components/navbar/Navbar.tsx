@@ -8,10 +8,12 @@ import Link from "next/link";
 import { IoMdLogOut } from "react-icons/io";
 const Navbar = () => {
   const router = useRouter();
+
   const handleLogOut = () => {
     Cookies.remove("Token");
     router.push("/login");
   };
+  
   const [auth, setAuth] = useState(true);
   useEffect(() => {
     const tokenExist = Cookies.get("Token");
@@ -55,7 +57,9 @@ const Navbar = () => {
               <button className="button2 relative px-4 py-2">Login</button>
             </Link>
 
-            <button className="px-4 my-auto button2 relative py-2">Register</button>
+            <button className="px-4 my-auto button2 relative py-2">
+              Register
+            </button>
           </div>
         )}
       </div>

@@ -4,15 +4,15 @@ const isAuthenticated = async (req: NextRequest) => {
   try {
     // const cookiesAccessToken: any =  cookies().get("Token");
     const cookiesAccessToken = req?.cookies?.get("Token")?.value as string;
- 
+
     if (!cookiesAccessToken) {
       return false;
     }
-   
-    return true
+
+    return true;
   } catch (error) {
     console.log("internal server error " + error);
-    return false
+    return false;
   }
 };
 

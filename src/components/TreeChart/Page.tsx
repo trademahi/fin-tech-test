@@ -11,9 +11,7 @@ interface ChartProps {
 
 const ChartComponent: React.FC<ChartProps> = ({ currentData }) => {
 
-
   useEffect(() => {
-    // Initialize echarts instance
     const chartDom = document.getElementById("main");
     const myChart = echarts.init(chartDom);
 
@@ -56,14 +54,14 @@ const ChartComponent: React.FC<ChartProps> = ({ currentData }) => {
             type: "value",
             name: "Profit",
             axisLabel: {
-              formatter: "{value} $", // Assuming profit is in dollars
+              formatter: "{value} $", 
             },
           },
           {
             type: "value",
             name: "Revenue",
             axisLabel: {
-              formatter: "{value} $", // Assuming revenue is in dollars
+              formatter: "{value} $",
             },
           },
         ],
@@ -71,32 +69,28 @@ const ChartComponent: React.FC<ChartProps> = ({ currentData }) => {
           {
             name: "Profit",
             type: "bar",
-            data: totalProfits, // Use 'profit' field for y-axis
+            data: totalProfits, 
           },
           {
             name: "Revenue",
             type: "line",
-            data: totalRevenues, // Use 'revenue' field for y-axis
+            data: totalRevenues, 
           },
         ],
       };
 
-      // Apply the option to the chart
       option && myChart.setOption(option);
     }
-    // Clean up the chart when the component unmounts
     return () => {
       myChart.dispose();
     };
-  }, [currentData]); 
+  }, [currentData]);
 
   return (
     <div
       id="main"
       style={{ width: "90%", height: "55vh", margin: "auto" }}
-    >
-      
-    </div>
+    ></div>
   );
 };
 

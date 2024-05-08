@@ -62,11 +62,9 @@ const page = () => {
           content: "file uploaded successfully",
         });
 
-      
         setFile(null);
         setFileName("");
 
-     
         if (inputRef.current) {
           inputRef.current.value = "";
         }
@@ -85,7 +83,6 @@ const page = () => {
         <div className="w-full relative overflow-hidden">
           <Navbar />
         </div>
-
         <p className="text-[2rem]  text-neutral-500 mb-2 font-bold text-center mt-[1rem]">
           Upload File
         </p>
@@ -103,7 +100,6 @@ const page = () => {
             <button className="px-4 py-2 button2 relative">Charity list</button>
           </Link>
         </div>
-
         {contextHolder}
         <div className="w-full md:w-[22%] z-50 mx-auto border uploadCard h-[50vh] rounded-lg flex flex-wrap relative ">
           <div className="w-fit   flex flex-col gap-3 h-fit absolute top-0 bottom-0 left-0 right-0 m-auto">
@@ -161,9 +157,9 @@ const page = () => {
               {inCompleteData}
             </p>
             <p className="text-[0.9rem] my-auto text-neutral-500">row error</p>
-          
           </div>
-         )} *
+        )}{" "}
+        *
       </div>
     </>
   );

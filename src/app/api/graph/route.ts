@@ -1,22 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
 import clientPromise from "@/lib/mongoose";
 import Financial from "@/lib/models/financial.model";
-interface CustomRequest extends NextRequest {
-  email?: string;
-}
 
-export async function POST(req: CustomRequest, res: NextResponse) {
+
+export async function POST(req: NextRequest, res: NextResponse) {
   try {
     await clientPromise();
 
-    const searchParams = await req.json()
-    const email = searchParams.userId
+    const bodyData = await req.json();
+    const email = bodyData.userId;
+
 
     const graphTwo = await Financial.aggregate([
       {
         $match: {
-          uploader: { $regex: `^${email}$`, $options: "i" } 
-        }
+          uploader: { $regex: `^${email}$`, $options: "i" },
+        },
       },
       {
         $group: {
@@ -25,7 +24,8 @@ export async function POST(req: CustomRequest, res: NextResponse) {
         },
       },
     ]);
-    const totalCharityInMillion = graphTwo.reduce((total, item) => total + item.totalCharity, 0) / 1000000;
+    const totalCharityInMillion =
+      graphTwo.reduce((total, item) => total + item.totalCharity, 0) / 1000000;
 
     const data = {
       name: `All charity - ${totalCharityInMillion} M`,
@@ -42,12 +42,12 @@ export async function POST(req: CustomRequest, res: NextResponse) {
     let convertDate = new Date(parseInt(yearMonth), 1, 1);
 
     const graphOne = await Financial.aggregate([
-      {$match:{uploader:email}},
+      { $match: { uploader: email } },
       {
         $match: {
           $expr: {
             $eq: [
-              { $dateToString: { format: dateChecheck, date: '$date' } },
+              { $dateToString: { format: dateChecheck, date: "$date" } },
               { $dateToString: { format: dateChecheck, date: convertDate } },
             ],
           },
@@ -61,20 +61,30 @@ export async function POST(req: CustomRequest, res: NextResponse) {
         },
       },
       {
-        $sort: { "_id": 1 },
-      }
+        $sort: { _id: 1 },
+      },
     ]);
 
     const formattedMonths: any = [];
     const totalProfits: any = [];
     const totalRevenues: any = [];
     const monthsMap: any = {
-      '01': 'January', '02': 'February', '03': 'March', '04': 'April',
-      '05': 'May', '06': 'June', '07': 'July', '08': 'August',
-      '09': 'September', '10': 'October', '11': 'November', '12': 'December'
+      "01": "January",
+      "02": "February",
+      "03": "March",
+      "04": "April",
+      "05": "May",
+      "06": "June",
+      "07": "July",
+      "08": "August",
+      "09": "September",
+      "10": "October",
+      "11": "November",
+      "12": "December",
     };
-    graphOne.forEach(item => {
-      const [year, month] = item._id.split('-');
+
+    graphOne.forEach((item) => {
+      const [year, month] = item._id.split("-");
       const formattedMonth = `${monthsMap[month]} ${year}`;
       formattedMonths.push(formattedMonth);
       totalProfits.push(Math.round(item.totalProfit));
@@ -82,15 +92,19 @@ export async function POST(req: CustomRequest, res: NextResponse) {
     });
 
     const graphOneData = {
-      formattedMonths, totalProfits, totalRevenues
+      formattedMonths,
+      totalProfits,
+      totalRevenues,
     };
 
-  
-
-    const customResponse = NextResponse.json({ data, status: "success", graphOne: graphOneData });
-    customResponse.headers.set('Cache-Control', 'no-store');
-    // res.setHeader('Cache-Control', 'no-store');
+    const customResponse = NextResponse.json({
+      data,
+      status: "success",
+      graphOne: graphOneData,
+    });
+    customResponse.headers.set("Cache-Control", "no-store");
     return customResponse;
+
   } catch (error) {
     console.error(error);
     return NextResponse.json(error);
