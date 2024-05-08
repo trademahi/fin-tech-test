@@ -5,19 +5,13 @@ interface CustomRequest extends NextRequest {
   email?: string;
 }
 
-export async function GET(req: CustomRequest, res: NextResponse) {
+export async function POST(req: CustomRequest, res: NextResponse) {
   try {
     await clientPromise();
 
-
-    // const cookies=req?.cookies.get('Token')
-   
-    // if(cookies){
-    //    email=cookies?.value
-    // }
-   
-    const searchParams = req.nextUrl.searchParams
-    const email = searchParams.get('userId')
+    const searchParams = await req.json()
+    console.log(searchParams,'searchParamssearchParamssearchParams')
+    const email = searchParams.userId
 
     const graphTwo = await Financial.aggregate([
       {
@@ -32,7 +26,6 @@ export async function GET(req: CustomRequest, res: NextResponse) {
         },
       },
     ]);
-    // console.log(graphTwo,'----------------------------------')
     const totalCharityInMillion = graphTwo.reduce((total, item) => total + item.totalCharity, 0) / 1000000;
 
     const data = {
@@ -45,58 +38,57 @@ export async function GET(req: CustomRequest, res: NextResponse) {
         children: [],
       })),
     };
-// console.log(data,'data-----------------------------------------')
     let dateChecheck = "%Y";
     const yearMonth: any = 2023;
     let convertDate = new Date(parseInt(yearMonth), 1, 1);
 
-    // const graphOne = await Financial.aggregate([
-    //   {$match:{uploader:email}},
-    //   {
-    //     $match: {
-    //       $expr: {
-    //         $eq: [
-    //           { $dateToString: { format: dateChecheck, date: '$date' } },
-    //           { $dateToString: { format: dateChecheck, date: convertDate } },
-    //         ],
-    //       },
-    //     },
-    //   },
-    //   {
-    //     $group: {
-    //       _id: { $dateToString: { format: "%Y-%m", date: "$date" } },
-    //       totalProfit: { $sum: "$profit" },
-    //       totalRevenue: { $sum: "$revenue" },
-    //     },
-    //   },
-    //   {
-    //     $sort: { "_id": 1 },
-    //   }
-    // ]);
+    const graphOne = await Financial.aggregate([
+      {$match:{uploader:email}},
+      {
+        $match: {
+          $expr: {
+            $eq: [
+              { $dateToString: { format: dateChecheck, date: '$date' } },
+              { $dateToString: { format: dateChecheck, date: convertDate } },
+            ],
+          },
+        },
+      },
+      {
+        $group: {
+          _id: { $dateToString: { format: "%Y-%m", date: "$date" } },
+          totalProfit: { $sum: "$profit" },
+          totalRevenue: { $sum: "$revenue" },
+        },
+      },
+      {
+        $sort: { "_id": 1 },
+      }
+    ]);
 
-    // const formattedMonths: any = [];
-    // const totalProfits: any = [];
-    // const totalRevenues: any = [];
-    // const monthsMap: any = {
-    //   '01': 'January', '02': 'February', '03': 'March', '04': 'April',
-    //   '05': 'May', '06': 'June', '07': 'July', '08': 'August',
-    //   '09': 'September', '10': 'October', '11': 'November', '12': 'December'
-    // };
-    // graphOne.forEach(item => {
-    //   const [year, month] = item._id.split('-');
-    //   const formattedMonth = `${monthsMap[month]} ${year}`;
-    //   formattedMonths.push(formattedMonth);
-    //   totalProfits.push(Math.round(item.totalProfit));
-    //   totalRevenues.push(Math.round(item.totalRevenue));
-    // });
+    const formattedMonths: any = [];
+    const totalProfits: any = [];
+    const totalRevenues: any = [];
+    const monthsMap: any = {
+      '01': 'January', '02': 'February', '03': 'March', '04': 'April',
+      '05': 'May', '06': 'June', '07': 'July', '08': 'August',
+      '09': 'September', '10': 'October', '11': 'November', '12': 'December'
+    };
+    graphOne.forEach(item => {
+      const [year, month] = item._id.split('-');
+      const formattedMonth = `${monthsMap[month]} ${year}`;
+      formattedMonths.push(formattedMonth);
+      totalProfits.push(Math.round(item.totalProfit));
+      totalRevenues.push(Math.round(item.totalRevenue));
+    });
 
-    // const graphOneData = {
-    //   formattedMonths, totalProfits, totalRevenues
-    // };
+    const graphOneData = {
+      formattedMonths, totalProfits, totalRevenues
+    };
 
   
 
-    const customResponse = NextResponse.json({ data, status: "success", graphOne: {} });
+    const customResponse = NextResponse.json({ data, status: "success", graphOne: graphOneData });
     customResponse.headers.set('Cache-Control', 'no-store');
 
     return customResponse;

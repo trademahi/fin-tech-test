@@ -18,16 +18,16 @@ const page = () => {
     const handleGetFinData = async () => {
       try {
         const data=  Cookies.get('Email')
-        const response = await axios.get(`/api/graph?userId=${data}`);
+        const response = await axios.post("/api/graph",{userId:data});
         const status = response.data.status;
         console.log(response,'outside')
        
         if (status === "success") {
          console.log(response.data,'vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv')
           setGraphTwoData(response.data.data);
-          // setGraphOne(response.data.graphOne);
+          setGraphOne(response.data.graphOne);
      
-          return setTrigger(Date());
+           setTrigger(Date());
         }
 
         setGraphLoading(false);
@@ -64,13 +64,13 @@ const page = () => {
         </div>
 
         <div className="w-[80%] mx-auto shadow rounded-lg border h-[55vh] relative">
-          {/* {graphLoading ? (
+          {graphLoading ? (
             <LoaderSpin />
           ) : (
           
             <ChartComponent currentData={graphOne} />
            
-          )} */}
+          )}
         </div>
 
         <div
