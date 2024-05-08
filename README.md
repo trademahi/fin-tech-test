@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Fin-Tech Project
+<p align="center"><img src="https://i.postimg.cc/9f7RngtP/Screenshot-2024-05-08-133355.png" alt="upload-image"></p>
 
-## Getting Started
+## Pages Overview
 
-First, run the development server:
+This Fin-Tech project consists of several key pages:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. **Login**: Users can authenticate themselves to access the dashboard and other features.
+2. **Dashboard**: Provides an overview of financial data, analytics, and relevant information.
+3. **Charity List**: Displays a list of registered charities or organizations for potential donations.
+4. **Uploading File**: Allows users to upload financial documents securely.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Additional Features
 
-## Learn More
+In addition to the core functionalities, this project includes the following extra features:
 
-To learn more about Next.js, take a look at the following resources:
+- **Missing Data Files Count**: Calculates and shows the count of missing data files in the frontend interface.
+- **Token Authentication Middleware**: Middleware to handle authentication tokens, preventing unauthorized access to routes.
+- **Loading Screen**: Displays a loading screen while data is being fetched.
+- **No Data Message**: Displays a message when no data is available.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+  
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+This project is deployed on Vercel. You can access it [here](https://fin-tech-test.vercel.app/).
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Running Flow
+
+To run this project locally, follow these steps:
+
+1. **Clone the GitHub Repository**: 
+   Clone the repository containing your project to your local machine using Git.
+
+   
+2. **Navigate to the Project Directory**: 
+Open your terminal or command prompt and navigate to the directory where you cloned the repository.
+
+
+3. **Install Dependencies**: 
+If your project has any dependencies, install them using a package manager.
+
+
+4. **Run the Project**: 
+Once the dependencies are installed, run the project.
+
+
+5. **Access the Project Locally**: 
+Once the project is running locally, access it by opening a web browser and navigating to the appropriate URL.
+
+
+## Other pages
+<p align="center"><img src="https://i.postimg.cc/9f7RngtP/Screenshot-2024-05-08-133355.png
+" alt="login-image"></p>
+<p align="center"><img src="https://i.postimg.cc/447fbHPt/Screenshot-2024-05-08-133431.png" alt="upload-image"></p>
+<p align="center"><img src="https://i.postimg.cc/yxJwm9zN/Screenshot-2024-05-08-133448.png" alt="upload-image"></p>
+<p align="center"><img src="https://i.postimg.cc/Fz8X8pxc/Screenshot-2024-05-08-133600.png" alt="upload-image"></p>
+<p align="center"><img src="https://i.postimg.cc/CMPhbHbw/Screenshot-2024-05-08-133546.png" alt="upload-image"></p>
+
+
+
+
+
+
