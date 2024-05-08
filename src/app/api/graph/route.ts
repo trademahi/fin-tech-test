@@ -95,6 +95,6 @@ console.log(data,'data-----------------------------------------')
     return customResponse;
   } catch (error) {
     console.error(error);
-    return NextResponse.json("Server error");
+    return NextResponse.json(error);
   }
 }
